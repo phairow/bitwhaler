@@ -82,8 +82,18 @@ async fn fetch_whale(db: Db) -> Result<(), Box<dyn std::error::Error>> {
         // .await?;
 
     println!("Response: {:?}", resp);
-    let parsed = resp.json::<HashMap<String, String>>().await;
-    println!("{:?}", parsed);
+    let resp_body = resp.text().await;
+
+    match resp_body {
+        Ok(body) => {
+            match json::parse(&body){
+                Ok(json) => println!("Parsed JSON: {:#}", json),
+                Err(err) => println!("Error parsin JSON!")
+            }
+        },
+        Err(err) => println!("error decoding response body{}", err)
+    }
+
 
     let mut db = db.lock().unwrap();
 
@@ -91,6 +101,7 @@ async fn fetch_whale(db: Db) -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
 
 async fn fetch_tickers(db: Db) {
     println!("-fetch_tickers-");
