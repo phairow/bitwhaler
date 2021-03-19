@@ -27,27 +27,51 @@
         pubnub.addListener({
             message: function(m) {
                 audioElement.play();
+                // alert(JSON.stringify(m.message))
                 const images = document.querySelector('.images');
                 images.className = "images";
                 const whale = document.querySelector('#whale');
                 whale.className = "";
-
+                const message = document.querySelector('#message');
+                message.innerHTML = "Blockchain: " + m.message.whale.blockchain + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Amount: " + m.message.whale.amount;
                 setTimeout(() => {
                     audioElement.pause();
                     const whale = document.querySelector('#whale');
                     whale.className = "hidden";
+
+                    // Test: Fake publish
+                
+                    // setTimeout(() => {
+                    //     pubnub.publish( {
+                    //         message: {
+                    //             whale: {
+                    //                 "blockchain": "bitcoin",
+                    //                 "amount": "500001"
+                    //             }
+                    //         },
+                    //         channel: 'whaler_process'
+                    //     });    
+                    // }, 3000);
+
                 }, 6000);
             },
             status: function(s) {
     
-                if (s.category === "PNConnectedCategory") {
-                    setTimeout(() => {
-                        pubnub.publish( {
-                            message: 'hello',
-                            channel: 'whaler_process'
-                        });    
-                    }, 3000);
-                }
+                // Test: Fake publish
+
+                // if (s.category === "PNConnectedCategory") {
+                //     setTimeout(() => {
+                //         pubnub.publish( {
+                //             message: {
+                //                 whale: {
+                //                     "blockchain": "bitcoin",
+                //                     "amount": "500001"
+                //                 }
+                //             },
+                //             channel: 'whaler_process'
+                //         });    
+                //     }, 3000);
+                // }
             }
         });
         

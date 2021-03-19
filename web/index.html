@@ -1,16 +1,24 @@
 <!doctype html>
 <html>
     <head>
-        <title>Whaler</title>
+        <title>Bit Whaler</title>
         <link rel="stylesheet" href="/index.css?v=2">
         <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.27.4.min.js"></script>
     </head>
     <body>
+        <div id="charts">
+            <div id="greed">
+                <img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" />
+            </div>  
+            <div id="chart-container">
+
+            </div> 
+        </div>
         <div class="banner">
             <div class="bannertitle">
-                Whaler
+                Bit Whaler
             </div>
-            <image width="400px" src="whale.jpeg" />
+            <image style="width:600px" src="whale.jpeg" />
             <div>
                 <button id="startbutton">Start</button>
             </div>
@@ -34,9 +42,17 @@
                 <span class="image">
                     <iframe src="https://giphy.com/embed/jQWJUET9SPFxRINeMP" width="160" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cryptomkg-to-the-moon-gif-meme-jQWJUET9SPFxRINeMP"></a></p>
                 </span>
+                <div id="message">
+                    hi
+                </div>
             </span>
         </div>
-
         <script src="/index.js?v=2"></script>
+        <script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
+        <script>
+            var chart = new cryptowatch.Embed('bitfinex', 'btcusd');
+
+            chart.mount('#chart-container');
+        </script>
     </body>
 </html>

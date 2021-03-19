@@ -4,6 +4,8 @@
     margin: 0;
     padding: 40px;
     text-align:center;
+    position: absolute;
+    top: 0;
 }
 
 .bannertitle {
@@ -14,13 +16,24 @@
 
 .bannerimage {
     width: 400px;
+    z-index: 200;
 }
 
 #whale {
     width: 100%;
     margin: 0;
+    margin-top: 15%;
     padding: 0;
     text-align:center;
+    background-color: red;
+    z-index: 300;
+    position: absolute;
+}
+
+#message {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
 }
 
 #startbutton {
@@ -30,7 +43,31 @@
     margin-top: 20px;
 }
 
+#chart-container {
+    position: absolute;
+    top: 0;
+    width: 25%;
+    margin: 20px;
+}
+
+#charts {
+    margin: 20px;
+    width: 100%;
+    z-index: 100;
+}
+
+#greed {
+    width: 100%;
+}
+
+#greed img {
+    margin: 20px;
+    float: right;
+    width: 18%;
+}
+
 .images {
+    margin-top: 20px;
     display: inline-block;
 }
 
